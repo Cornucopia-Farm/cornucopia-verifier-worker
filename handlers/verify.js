@@ -83,7 +83,7 @@ export async function handleVerify(request) {
                 Permit: [{ name: 'username', type: 'string' }],
             },
             domain: {
-                name: 'Sybil Verifier',
+                name: 'Cornucopia Verifier',
                 version: '1',
             },
             primaryType: 'Permit',
@@ -116,7 +116,7 @@ export async function handleVerify(request) {
         let response
 
         const fileName = 'verified.json'
-        const githubPath = '/repos/Uniswap/sybil-list/contents/'
+        const githubPath = '/repos/cornucopia-farm/cornucopia-list/contents/'
 
         const fileInfo = await fetch(
             'https://api.github.com' + githubPath + fileName,
@@ -150,8 +150,8 @@ export async function handleVerify(request) {
         const updateResponse = await octokit.request(
             'PUT ' + githubPath + fileName,
             {
-                owner: 'uniswap',
-                repo: 'sybil-list',
+                owner: 'cornucopia',
+                repo: 'cornucopia-list',
                 path: fileName,
                 message: 'Linking ' + formattedSigner + ' to handle: ' + handle,
                 sha,
